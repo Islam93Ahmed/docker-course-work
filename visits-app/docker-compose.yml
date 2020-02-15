@@ -1,0 +1,9 @@
+version: '3'
+services: 
+    redis-service:
+        image: 'redis'
+    visits-app:
+        restart: always
+        build: . # build the image using the current directory
+        ports: 
+            - "4001:8081" # map the local port to image port
