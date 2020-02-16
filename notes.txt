@@ -1,0 +1,84 @@
+Container: 
+- isolated environment of memory and network 
+- instances of Images
+
+Image: 
+- file contains the dependences and configurations for creating containers
+- contains : 
+	> File System Snapshot
+	> Startup command
+	
+Docker CLI or Client
+- issue commands to Docker Server or Daemon
+
+Docker Server (Daemon)
+- responsible for everything related to containers 
+
+	
+Docker Hub
+
+Image Cache
+
+Namespacing : isolating resources per process or group of processes
+	processes
+	hard drive
+	network
+	users
+	hostnames
+	
+Control Group(cgroup): limit amount of resources used per process
+	memory
+	cpu usage
+	hd i/o
+	network bandwidth
+	
+
+--------------------------------------------------------------------------
+Docker Account:
+ID: islamahmed93
+Email: islam93ahmed@gmail.com
+Password: F@ceBook93
+--------------------------------------------------------------------------
+
+Commands:
+
+> docker version
+
+> docker run image-name [command]
+	1- try to find the image in the local image cache 
+	2- if image not found locally, it will download the image from dockerhub and add it to image cache
+	3- create container from the image
+	4- run container 
+	
+	[command] override the default command
+	
+> docker ps [--all]
+list all running containers
+[--all] list all containers have been ever created
+
+> docker create image-name
+
+> docker start -a container-id
+
+> docker system prune
+delete all stopped containers
+
+> docker log container-id
+
+> docker stop container-id
+if stop command does not stop the container in 10 seconds it will fall back to kill command
+
+> docker kill container-id
+
+> docker exec -it <container-id> <command> 
+	- execute commands in a container
+	- [-it] or [-i -t] flags allow to input values to container
+		- [-i] to attach the terminal to the stdin of the process
+		- [-t] to formate the command 
+	docker exec -it <container-id> sh
+	
+> docker run -it <image-name> <command>
+
+> docker build .
+	- on rebuilding the docker file -> it will use cached images for unchanged steps
+		-> it will create new images for changed steps
